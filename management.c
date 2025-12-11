@@ -81,7 +81,7 @@ int main()
 			case 0:
 			{
 				
-				printf("已退出通讯录\n");
+				printf("已退出管理系统\n");
 				break;
 		        }
 			default:
@@ -90,3 +90,4 @@ int main()
 				break;
 			}
 	}
+}
