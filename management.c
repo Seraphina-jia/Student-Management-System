@@ -15,7 +15,6 @@ void add_stu()
     if (stu_count >= MAX_STU)
     {
         printf("学生数量已达上限，无法添加！\n");
-        _getch();
         return;
     }
 
@@ -27,7 +26,6 @@ void add_stu()
         if (strcmp(id, stu[i].id) == 0)
         {
             printf("该学号已存在！\n");
-            _getch();
             return;
         }
     }
@@ -39,11 +37,22 @@ void add_stu()
     scanf("%f", &stu[stu_count].score[0]);
     printf("请输入英语成绩：");
     scanf("%f", &stu[stu_count].score[1]);
-
     stu_count++;
     printf("添加成功！\n");
-    _getch();
 }
+void show_stu()
+{
+	if(stu_count==0)
+	{
+		printf("系统为空\n");
+		return;
+	}
+	printf("%21s%21s%10s%10s\n", "姓名", "学号", "数学成绩", "英语成绩");
+	for(int i = 0;i<stu_count;i++)
+	{
+		printf("%21s%21s%10f%10f\n",stu[i].name, stu[i].id, stu[i].score[0], stu[i].score[1]);
+	}
+}	
 int main()
 {
 	int x = 0;
@@ -77,6 +86,7 @@ int main()
 			case 5:
 			{
 				show_stu();
+				break;
 			}
 			case 0:
 			{
@@ -89,38 +99,6 @@ int main()
 				printf("输入错误，请重新输入\n");
 				break;
 			}
-	}
-// 修改学生
-void modify_stu()
-{
-    if (stu_count == 0)
-    {
-        printf("暂无学生信息，无法修改！\n");
-        _getch();
-        return;
-    }
-
-    char id[20];
-    printf("请输入要修改的学生学号：");
-    scanf("%s", id);
-
-    for (int i = 0; i < stu_count; i++)
-    {
-        if (strcmp(id, stu[i].id) == 0)
-        {
-            printf("请输入新姓名：");
-            scanf("%s", stu[i].name);
-            printf("请输入新数学成绩：");
-            scanf("%f", &stu[i].score[0]);
-            printf("请输入新英语成绩：");
-            scanf("%f", &stu[i].score[1]);
-            printf("修改成功！\n");
-            _getch();
-            return;
-        }
-    }
-    printf("未找到该学生！\n");
-    _getch();
 		}
 	}while(x!=0);
 }
